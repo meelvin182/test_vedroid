@@ -71,7 +71,7 @@ fun Square(modifier: Modifier = Modifier, boxName: String) {
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             if(boxName=="ViewModel tg"){
-                val messages = listOf<String>("a","b")
+                val messages = viewModel.messages.value
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
