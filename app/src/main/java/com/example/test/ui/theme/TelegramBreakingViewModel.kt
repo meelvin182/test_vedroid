@@ -4,15 +4,11 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.launch
-import kotlinx.coroutines.runBlocking
 import okhttp3.ResponseBody
 import org.jsoup.Jsoup
-import retrofit2.Call
 import retrofit2.Retrofit
-import retrofit2.awaitResponse
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.http.GET
 import retrofit2.http.Url
@@ -22,7 +18,7 @@ interface TelegramService {
     suspend fun getChannelContent(@Url url: String): ResponseBody
 }
 
-class MessagesViewModel : ViewModel() {
+class TelegramBreakingViewModel : ViewModel() {
     private val _messages: MutableStateFlow<List<String>> = MutableStateFlow(emptyList())
     val messages: Flow<List<String>> = _messages.asStateFlow()
 

@@ -1,7 +1,6 @@
 package com.example.test.ui.theme
 
 import androidx.compose.foundation.background
-import androidx.compose.runtime.getValue
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -62,9 +61,7 @@ fun TeamScreen() {
 @Composable
 fun Square(modifier: Modifier = Modifier, boxName: String) {
     val showDialog = remember { mutableStateOf(false) }
-    val viewModel: MessagesViewModel = viewModel()
-
-    val messages: List<String> by MessagesViewModel().messages.collectAsState(initial = emptyList())
+    val telegram: TelegramBreakingViewModel = viewModel()
 
     Box(
         modifier = modifier
@@ -86,7 +83,7 @@ fun Square(modifier: Modifier = Modifier, boxName: String) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Column(Modifier.verticalScroll(rememberScrollState())) {
-                        viewModel.messages.collectAsState(initial = emptyList()).value.forEach { ItemRow(text = it) }
+                        telegram.messages.collectAsState(initial = emptyList()).value.forEach { ItemRow(text = it) }
                     }
 
                 }
