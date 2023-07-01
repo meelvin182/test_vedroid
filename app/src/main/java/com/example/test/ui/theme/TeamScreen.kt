@@ -75,7 +75,7 @@ fun Square(modifier: Modifier = Modifier, boxName: String) {
             verticalArrangement = Arrangement.Center,
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
-            if(boxName=="ViewModel tg"){
+            if (boxName == "ViewModel tg") {
                 Column(
                     modifier = Modifier
                         .fillMaxWidth()
@@ -83,11 +83,15 @@ fun Square(modifier: Modifier = Modifier, boxName: String) {
                     verticalArrangement = Arrangement.spacedBy(8.dp)
                 ) {
                     Column(Modifier.verticalScroll(rememberScrollState())) {
-                        telegram.messages.collectAsState(initial = emptyList()).value.forEach { ItemRow(text = it) }
+                        telegram.messages.collectAsState(initial = emptyList()).value.forEach {
+                            ItemRow(
+                                text = it
+                            )
+                        }
                     }
 
                 }
-            } else{
+            } else {
                 Button(
                     onClick = {
                         showDialog.value = true
@@ -113,13 +117,21 @@ fun Square(modifier: Modifier = Modifier, boxName: String) {
         )
     }
 }
+
 @Composable
 fun ItemRow(text: String) {
-    Card(modifier = Modifier
-        .padding(all = 10.dp)
-        .fillMaxWidth()) {
+    Card(
+        modifier = Modifier
+            .padding(all = 10.dp)
+            .fillMaxWidth()
+    ) {
         Column {
-            Text(text, fontSize = 10.sp, fontWeight = FontWeight.W700, modifier = Modifier.padding(1.dp))
+            Text(
+                text,
+                fontSize = 10.sp,
+                fontWeight = FontWeight.W700,
+                modifier = Modifier.padding(1.dp)
+            )
         }
     }
 }
